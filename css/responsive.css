@@ -27,12 +27,12 @@
 
   .main-nav__list {
     flex-direction: column;
-    padding: var(--space-4) var(--space-6);
+    padding: var(--space-3) var(--space-4);
   }
 
   .main-nav__link {
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--text-base);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
     border-radius: var(--radius-sm);
   }
 
@@ -43,7 +43,7 @@
 
   /* Hero smaller on mobile */
   .hero {
-    min-height: 80vh;
+    min-height: 85vh;
     padding-top: calc(var(--header-height) + var(--space-12));
   }
 
@@ -57,9 +57,14 @@
   }
 
   .bio__photo-placeholder {
-    width: 120px;
-    height: 120px;
-    font-size: var(--text-3xl);
+    width: 100px;
+    height: 100px;
+    font-size: var(--text-2xl);
+  }
+
+  /* Stats smaller on mobile */
+  .stat__number {
+    font-size: var(--text-2xl);
   }
 }
 
@@ -90,7 +95,7 @@
   }
 
   .hero__subtitle {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
   }
 
   /* Bio layout adjustment */
@@ -127,17 +132,21 @@
   }
 
   .page-header {
-    padding-top: calc(var(--header-height) + var(--space-20));
-    padding-bottom: var(--space-20);
+    padding-top: calc(var(--header-height) + var(--space-16));
+    padding-bottom: var(--space-16);
   }
 
   .page-header__title {
     font-size: var(--text-5xl);
   }
 
+  .stat__number {
+    font-size: var(--text-4xl);
+  }
+
   /* Footer horizontal layout */
   .site-footer__nav ul {
     flex-direction: row;
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
 }

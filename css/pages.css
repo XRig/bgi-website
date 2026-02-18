@@ -12,8 +12,8 @@
   background-image:
     linear-gradient(
       to bottom,
-      rgba(27, 42, 74, 0.6),
-      rgba(27, 42, 74, 0.85)
+      rgba(27, 42, 74, 0.55),
+      rgba(27, 42, 74, 0.8)
     ),
     url('../images/bison-osage-county.jpg');
   background-size: cover;
@@ -23,24 +23,27 @@
 }
 
 .hero__content {
-  max-width: 700px;
+  max-width: 680px;
 }
 
 .hero__title {
   font-family: var(--font-heading);
   font-size: var(--text-4xl);
   color: var(--color-white);
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: var(--space-6);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
 }
 
 .hero__subtitle {
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
   margin-bottom: var(--space-8);
   max-width: 100%;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
 }
 
 
@@ -49,12 +52,12 @@
    ============================================= */
 
 .intro-content {
-  max-width: 70ch;
+  max-width: 65ch;
 }
 
 .intro-content p {
-  font-size: var(--text-lg);
-  line-height: 1.7;
+  font-size: var(--text-base);
+  line-height: 1.65;
   color: var(--color-dark-gray);
 }
 
@@ -70,7 +73,7 @@
 .resources-feature-image {
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .feature-image {
@@ -85,17 +88,17 @@
    ============================================= */
 
 .quick-facts {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .quick-facts__item {
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-3) var(--space-4);
   background: var(--color-white);
   border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-gold);
-  font-size: var(--text-base);
+  border-left: var(--accent-border) solid var(--color-gold);
+  font-size: var(--text-sm);
 }
 
 .quick-facts__item strong {
@@ -110,17 +113,27 @@
 .concession-map {
   max-width: 800px;
   margin-inline: auto;
+  margin-top: var(--space-6);
   background: var(--color-white);
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  padding: var(--space-4);
+  padding: var(--space-3);
 }
 
 .concession-map img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.concession-note {
+  margin-top: var(--space-4);
+}
+
+.prospect-intro {
+  margin-bottom: var(--space-6);
+  max-width: 68ch;
 }
 
 
@@ -135,7 +148,7 @@
 .about-feature-image {
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 
@@ -144,6 +157,18 @@
    ============================================= */
 
 .contact-grid {
-  max-width: 800px;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.contact-office {
+  text-align: center;
+}
+
+.contact-office p {
+  margin-inline: auto;
+}
+
+.contact-office .section-title::after {
   margin-inline: auto;
 }

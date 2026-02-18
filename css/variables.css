@@ -17,32 +17,33 @@
   --color-black: #111827;
 
   /* Typography */
-  --font-heading: 'Georgia', 'Times New Roman', serif;
-  --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
   /* Font Sizes */
   --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.1875rem;
+  --text-2xl: 1.375rem;
+  --text-3xl: 1.75rem;
+  --text-4xl: 2.125rem;
+  --text-5xl: 2.75rem;
 
   /* Spacing */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
+  --space-3: 0.625rem;
+  --space-4: 0.875rem;
+  --space-5: 1rem;
+  --space-6: 1.25rem;
+  --space-8: 1.5rem;
+  --space-10: 2rem;
+  --space-12: 2.5rem;
+  --space-16: 3rem;
+  --space-20: 3.5rem;
+  --space-24: 4.5rem;
 
   /* Layout */
   --container-max: 1200px;
@@ -50,11 +51,13 @@
   --header-height: 72px;
 
   /* Borders & Shadows */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --shadow-sm: 0 1px 3px rgba(27, 42, 74, 0.1);
-  --shadow-md: 0 4px 12px rgba(27, 42, 74, 0.12);
-  --shadow-lg: 0 8px 24px rgba(27, 42, 74, 0.15);
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --shadow-sm: 0 1px 2px rgba(27, 42, 74, 0.08), 0 1px 3px rgba(27, 42, 74, 0.06);
+  --shadow-md: 0 2px 8px rgba(27, 42, 74, 0.10), 0 4px 12px rgba(27, 42, 74, 0.06);
+  --shadow-lg: 0 4px 16px rgba(27, 42, 74, 0.12), 0 8px 24px rgba(27, 42, 74, 0.08);
+  --accent-border: 3px;
+  --section-border: 1px solid rgba(27, 42, 74, 0.08);
 
   /* Transitions */
   --transition-fast: 150ms ease;
