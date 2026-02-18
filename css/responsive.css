@@ -1,0 +1,143 @@
+/* =============================================
+   MOBILE (base styles are mobile-first)
+   Below 768px adjustments
+   ============================================= */
+
+@media (max-width: 767px) {
+  /* Mobile nav */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: var(--color-navy);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-base);
+  }
+
+  .main-nav.is-open {
+    max-height: 400px;
+  }
+
+  .main-nav__list {
+    flex-direction: column;
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .main-nav__link {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-base);
+    border-radius: var(--radius-sm);
+  }
+
+  /* Page header smaller on mobile */
+  .page-header__title {
+    font-size: var(--text-3xl);
+  }
+
+  /* Hero smaller on mobile */
+  .hero {
+    min-height: 80vh;
+    padding-top: calc(var(--header-height) + var(--space-12));
+  }
+
+  .hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  /* Bio stacking */
+  .bio {
+    text-align: center;
+  }
+
+  .bio__photo-placeholder {
+    width: 120px;
+    height: 120px;
+    font-size: var(--text-3xl);
+  }
+}
+
+
+/* =============================================
+   TABLET — 768px+
+   ============================================= */
+
+@media (min-width: 768px) {
+  .grid--2col {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid--3col {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .grid--4col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stats-bar {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero__title {
+    font-size: var(--text-5xl);
+  }
+
+  .hero__subtitle {
+    font-size: var(--text-xl);
+  }
+
+  /* Bio layout adjustment */
+  .bio {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+
+/* =============================================
+   DESKTOP — 1024px+
+   ============================================= */
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+
+  .section {
+    padding-block: var(--space-20);
+  }
+
+  h1 {
+    font-size: var(--text-5xl);
+  }
+
+  h2 {
+    font-size: var(--text-4xl);
+  }
+
+  .section-title {
+    font-size: var(--text-4xl);
+  }
+
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-20));
+    padding-bottom: var(--space-20);
+  }
+
+  .page-header__title {
+    font-size: var(--text-5xl);
+  }
+
+  /* Footer horizontal layout */
+  .site-footer__nav ul {
+    flex-direction: row;
+    gap: var(--space-6);
+  }
+}

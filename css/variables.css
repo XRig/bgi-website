@@ -1,0 +1,62 @@
+:root {
+  /* Brand Colors */
+  --color-navy: #1B2A4A;
+  --color-navy-light: #243556;
+  --color-steel-blue: #2E5F8A;
+  --color-steel-blue-light: #3A7AB5;
+  --color-gold: #D4A843;
+  --color-gold-light: #E8C875;
+  --color-gold-dark: #B8922F;
+
+  /* Neutrals */
+  --color-white: #FFFFFF;
+  --color-off-white: #F5F3EF;
+  --color-light-gray: #E8E6E1;
+  --color-mid-gray: #6B7280;
+  --color-dark-gray: #374151;
+  --color-black: #111827;
+
+  /* Typography */
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-narrow: 800px;
+  --header-height: 72px;
+
+  /* Borders & Shadows */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-sm: 0 1px 3px rgba(27, 42, 74, 0.1);
+  --shadow-md: 0 4px 12px rgba(27, 42, 74, 0.12);
+  --shadow-lg: 0 8px 24px rgba(27, 42, 74, 0.15);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}

@@ -1,0 +1,15 @@
+# Source photos (originals, not optimized for web)
+*.HEIC
+*.MP4
+*.jpeg
+IMG_0555.jpeg
+
+# Source photos in root (not the optimized images/ folder)
+/20171127_*.jpg
+/20171201_*.jpg
+/Flare pic*
+/*.JPG
+/*.pdf
+
+# macOS
+.DS_Store
