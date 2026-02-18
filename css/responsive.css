@@ -145,8 +145,20 @@
   }
 
   /* Footer horizontal layout */
-  .site-footer__nav ul {
+  .site-footer__inner {
     flex-direction: row;
-    gap: var(--space-4);
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .site-footer__nav ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--space-1);
+  }
+
+  .site-footer__copyright {
+    text-align: left;
   }
 }
