@@ -172,3 +172,9 @@
 .contact-office .section-title::after {
   margin-inline: auto;
 }
+
+.office-contact {
+  max-width: 280px;
+  margin-inline: auto;
+  margin-top: var(--space-8);
+}
