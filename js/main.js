@@ -1,38 +1,158 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Mobile navigation toggle
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  root.classList.add('js');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobile = window.matchMedia('(max-width: 767px)');
+  const header = document.querySelector('.site-header');
   const navToggle = document.querySelector('.nav-toggle');
   const mainNav = document.querySelector('#main-nav');
+  const motionToggle = document.querySelector('.motion-toggle');
+  let userPaused = false;
+  try { userPaused = localStorage.getItem('bgi-motion-paused') === 'true'; } catch { /* Preferences are optional. */ }
 
+  const closeNav = (returnFocus = false) => {
+    if (!navToggle || !mainNav) return;
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation');
+    mainNav.classList.remove('is-open');
+    if (returnFocus) navToggle.focus();
+  };
   if (navToggle && mainNav) {
     navToggle.addEventListener('click', () => {
-      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !isOpen);
-      mainNav.classList.toggle('is-open');
+      const open = navToggle.getAttribute('aria-expanded') !== 'true';
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      mainNav.classList.toggle('is-open', open);
     });
-
-    // Close nav when clicking a link (mobile)
-    mainNav.querySelectorAll('.main-nav__link').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.setAttribute('aria-expanded', 'false');
-        mainNav.classList.remove('is-open');
-      });
+    mainNav.addEventListener('click', event => {
+      if (event.target.closest('a')) closeNav();
     });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') closeNav(true);
+    });
+    document.addEventListener('click', event => {
+      if (!header?.contains(event.target)) closeNav();
+    });
+    header?.addEventListener('focusout', event => {
+      if (event.relatedTarget && !header.contains(event.relatedTarget)) closeNav();
+    });
+    mobile.addEventListener('change', () => closeNav(mobile.matches && mainNav.contains(document.activeElement)));
   }
 
-  // Set aria-current on active nav link based on current page
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const pageName = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index';
+  const currentPage = pageName.includes('.') ? pageName : `${pageName}.html`;
   document.querySelectorAll('.main-nav__link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.setAttribute('aria-current', 'page');
-    }
+    if (link.getAttribute('href') === currentPage) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
   });
+  document.querySelectorAll('[data-year]').forEach(el => { el.textContent = String(new Date().getFullYear()); });
+  const updateHeader = () => header?.classList.toggle('site-header--scrolled', window.scrollY > 16);
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
 
-  // Header scroll shadow
-  const header = document.querySelector('.site-header');
-  if (header) {
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('site-header--scrolled', window.scrollY > 10);
-    }, { passive: true });
+  // Content starts visible. Only add a reveal when the element is below the viewport.
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.editorial-grid, .section-heading, .operation-card, .resources-overview, .bio, .journal-empty__layout, .prospect').forEach(el => {
+      if (el.getBoundingClientRect().top <= window.innerHeight) return;
+      el.classList.add('reveal');
+      revealObserver.observe(el);
+    });
   }
-});
+
+  // Abstract signal traces echo the company's seismic roots; these are decorative, not field data.
+  const signals = [...document.querySelectorAll('.signal-canvas')].map(canvas => {
+    const context = canvas.getContext('2d');
+    return { canvas, context, width: 0, height: 0, visible: true };
+  }).filter(signal => signal.context);
+  let frame = 0;
+  let lastTime = 0;
+  let phase = 0;
+  const canAnimate = () => !reducedMotion.matches && !userPaused && !document.hidden;
+  const draw = signal => {
+    const { context: ctx, width, height } = signal;
+    if (!width || !height) return;
+    ctx.clearRect(0, 0, width, height);
+    const rows = 21;
+    for (let row = 0; row < rows; row++) {
+      ctx.beginPath();
+      ctx.lineWidth = row % 5 === 0 ? 1.3 : 0.7;
+      ctx.strokeStyle = row % 5 === 0 ? 'rgba(230,194,121,0.52)' : 'rgba(222,232,222,0.22)';
+      for (let x = 0; x <= width; x += 5) {
+        const u = x / width;
+        const envelope = Math.sin(u * Math.PI);
+        const y = height * (0.12 + row * 0.033) + Math.sin(u * 9 + row * 0.19 + phase) * height * 0.13 * envelope + Math.sin(u * 19 - phase * 0.65) * height * 0.035 * envelope;
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+  };
+  const resize = () => {
+    signals.forEach(signal => {
+      const bounds = signal.canvas.getBoundingClientRect();
+      const scale = Math.min(window.devicePixelRatio || 1, 2);
+      signal.width = bounds.width;
+      signal.height = bounds.height;
+      signal.canvas.width = Math.round(bounds.width * scale);
+      signal.canvas.height = Math.round(bounds.height * scale);
+      signal.context.setTransform(scale, 0, 0, scale, 0, 0);
+      draw(signal);
+    });
+  };
+  const tick = time => {
+    frame = 0;
+    if (!canAnimate() || !signals.some(signal => signal.visible)) { lastTime = 0; return; }
+    if (!lastTime || time - lastTime >= 32) {
+      phase += lastTime ? Math.min(time - lastTime, 100) * 0.00014 : 0;
+      lastTime = time;
+      signals.filter(signal => signal.visible).forEach(draw);
+    }
+    frame = requestAnimationFrame(tick);
+  };
+  const syncMotion = () => {
+    const paused = userPaused || reducedMotion.matches;
+    root.dataset.motion = paused ? 'paused' : 'running';
+    if (motionToggle) {
+      motionToggle.hidden = false;
+      motionToggle.disabled = reducedMotion.matches;
+      motionToggle.setAttribute('aria-pressed', String(paused));
+      motionToggle.querySelector('.motion-toggle__label').textContent = reducedMotion.matches ? 'Reduced motion on' : userPaused ? 'Play motion' : 'Pause motion';
+      motionToggle.querySelector('.motion-toggle__icon').textContent = paused ? '▷' : 'Ⅱ';
+    }
+    cancelAnimationFrame(frame);
+    frame = 0;
+    lastTime = 0;
+    if (canAnimate() && signals.some(signal => signal.visible)) frame = requestAnimationFrame(tick);
+    else signals.forEach(draw);
+  };
+  motionToggle?.addEventListener('click', () => {
+    userPaused = !userPaused;
+    try { localStorage.setItem('bgi-motion-paused', String(userPaused)); } catch { /* Continue without storing. */ }
+    syncMotion();
+  });
+  reducedMotion.addEventListener('change', syncMotion);
+  document.addEventListener('visibilitychange', syncMotion);
+  if ('IntersectionObserver' in window) {
+    const signalObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const signal = signals.find(item => item.canvas === entry.target);
+        if (signal) signal.visible = entry.isIntersecting;
+      });
+      syncMotion();
+    });
+    signals.forEach(signal => signalObserver.observe(signal.canvas));
+  }
+  if ('ResizeObserver' in window) {
+    const sizeObserver = new ResizeObserver(resize);
+    signals.forEach(signal => sizeObserver.observe(signal.canvas));
+  } else window.addEventListener('resize', resize, { passive: true });
+  resize();
+  syncMotion();
+})();

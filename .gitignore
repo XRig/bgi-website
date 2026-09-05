@@ -10,3 +10,6 @@ screenshots/
 
 # Claude project files
 .claude/
+
+# Generated static build
+dist/
