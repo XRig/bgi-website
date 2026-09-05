@@ -20,7 +20,8 @@ export async function versionAssets(root) {
   await saveIfChanged('css/style.css', stylesheet, versionedStylesheet);
 
   const assets = ['css/style.css', 'js/main.js', 'images/favicon.svg',
-    'images/bgi-logo-mark.svg', 'images/bgi-logo-mark-white.svg'];
+    'images/bgi-logo-mark.svg', 'images/bgi-logo-mark-white.svg',
+    'images/concession-map-redrawn.png'];
   const versions = new Map(await Promise.all(assets.map(async path => [path, await fingerprint(path)])));
   for (const file of await readdir(root)) {
     if (!file.endsWith('.html')) continue;
