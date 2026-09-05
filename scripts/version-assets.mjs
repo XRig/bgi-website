@@ -19,13 +19,15 @@ export async function versionAssets(root) {
   }
   await saveIfChanged('css/style.css', stylesheet, versionedStylesheet);
 
-  const assets = ['css/style.css', 'js/main.js', 'images/favicon.svg'];
+  const assets = ['css/style.css', 'js/main.js', 'images/favicon.svg',
+    'images/bgi-logo-mark.svg', 'images/bgi-logo-mark-white.svg'];
   const versions = new Map(await Promise.all(assets.map(async path => [path, await fingerprint(path)])));
   for (const file of await readdir(root)) {
     if (!file.endsWith('.html')) continue;
     const html = await readFile(join(root, file), 'utf8');
-    const versionedHtml = html.replace(/((?:href|src)=")(css\/style\.css|js\/main\.js|images\/favicon\.svg)(?:\?v=[^"]*)?(")/g,
-      (_, prefix, path, suffix) => `${prefix}${path}?v=${versions.get(path)}${suffix}`);
+    const versionedHtml = html.replace(/((?:href|src)=")([^"?#]+)(?:\?v=[^"]*)?(")/g,
+      (original, prefix, path, suffix) => versions.has(path)
+        ? `${prefix}${path}?v=${versions.get(path)}${suffix}` : original);
     await saveIfChanged(file, html, versionedHtml);
   }
 }

@@ -22,7 +22,7 @@ The `.openai/hosting.json` file identifies a separate private Sites review copy.
 
 Shared navigation and footer are present in each page so navigation works without JavaScript. Update every HTML page when changing those shared areas. `css/variables.css` contains the brand tokens. `css/revamp.css` contains the redesign and responsive layouts; the original CSS structure remains intact.
 
-The build updates content-based version queries on CSS imports and each page's stylesheet, script, and favicon links. This makes returning visitors load changed assets immediately instead of retaining a previous design from their browser cache. Include the resulting HTML and `css/style.css` changes in the same commit as an asset update; the checked-in source remains ready for direct static hosting.
+The build updates content-based version queries on CSS imports and each page's stylesheet, script, logo, and favicon links. This makes returning visitors load changed assets immediately instead of retaining a previous design from their browser cache. Include the resulting HTML and `css/style.css` changes in the same commit as an asset update; the checked-in source remains ready for direct static hosting.
 
 ## Adding the first journal entry
 
