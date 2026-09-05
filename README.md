@@ -22,6 +22,8 @@ The `.openai/hosting.json` file identifies a separate private Sites review copy.
 
 Shared navigation and footer are present in each page so navigation works without JavaScript. Update every HTML page when changing those shared areas. `css/variables.css` contains the brand tokens. `css/revamp.css` contains the redesign and responsive layouts; the original CSS structure remains intact.
 
+The build updates content-based version queries on CSS imports and each page's stylesheet, script, and favicon links. This makes returning visitors load changed assets immediately instead of retaining a previous design from their browser cache. Include the resulting HTML and `css/style.css` changes in the same commit as an asset update; the checked-in source remains ready for direct static hosting.
+
 ## Adding the first journal entry
 
 There is no CMS, account, or publishing service to configure. When an article is ready, create a new static HTML page using the shared header/footer, give it its own title, description, canonical URL and article content, then replace the coming-soon area in `blog.html` with a link and excerpt. Add the article URL to `sitemap.xml` and update the homepage's journal introduction. Keep publication dates factual. No article is published by this redesign.

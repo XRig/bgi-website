@@ -1,8 +1,10 @@
 import { cp, mkdir, readdir, rm } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { versionAssets } from './version-assets.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
+await versionAssets(root);
 const output = join(root, 'dist');
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
