@@ -28,6 +28,10 @@ There is no CMS, account, or publishing service to configure. When an article is
 
 ## Motion and accessibility
 
-`js/main.js` handles mobile navigation, visible-section entrances, decorative signal graphics, and the footer motion control. Signal lines are an abstract illustration, not seismic readings or current production data. Animations stop when the page is hidden or the graphic is out of view. The user's reduced-motion setting takes priority; the optional pause preference is stored only on their device. Core content, contact links, and navigation remain usable without JavaScript.
+`js/main.js` handles mobile navigation, visible-section entrances, decorative signal graphics, depth between original photo planes, and the footer motion control. The About-page field film is a 12-second Remotion composition built from three existing field photographs. Its editable source lives in `motion/`; rendered video and poster live in `media/`. Remotion is only a production tool and is not loaded in visitors’ browsers. Signal lines are an abstract illustration, not seismic readings or current production data. Animations stop when the page is hidden or the graphic is out of view. The user's reduced-motion setting takes priority; the optional pause preference is stored only on their device. Core content, contact links, and navigation remain usable without JavaScript.
 
-The visual work does not refresh operating statistics. Existing field figures and their historical context were retained. The inconsistent Warren 1 barrel total on the About page was replaced with a non-numeric description; the detailed Forbes Lake figures are unchanged and should be reviewed by the business when updated production information is available.
+The original website wording has been restored at the owner’s request, including the homepage headline, approach, project descriptions, interior-page headings, and all existing body content. Only the new blog and accessibility controls introduce new copy. The visual work does not refresh operating statistics or resolve existing inconsistencies in the source copy.
+
+## Logo
+
+The supplied low-resolution BGI mark was vectorized using deterministic tracing. The black and white SVG variants in `images/` have transparent backgrounds and omit the lettering from the original image. The mark is used in navigation, the footer, and the favicon.

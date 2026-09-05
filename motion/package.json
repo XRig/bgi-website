@@ -1,0 +1,9 @@
+{
+  "name": "bgi-field-film",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {"render": "node render.mjs", "still": "node render.mjs --still-only"},
+  "dependencies": {"@remotion/bundler": "4.0.515", "@remotion/renderer": "4.0.515", "react": "19.2.3", "react-dom": "19.2.3", "remotion": "4.0.515"},
+  "devDependencies": {"@types/react": "19.2.7", "typescript": "5.9.3"}
+}

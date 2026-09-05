@@ -23,7 +23,7 @@
     "@type": "Organization",
     "name": "Berkeley Geoimaging, LLC",
     "url": "https://www.bgina.com",
-    "logo": "https://www.bgina.com/images/favicon.svg",
+    "logo": "https://www.bgina.com/images/bgi-logo-mark.svg",
     "description": "Oil and gas exploration and production company using 3D seismic interpretation to identify and develop assets in Oklahoma and Illinois.",
     "address": {
       "@type": "PostalAddress",
@@ -50,7 +50,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a href="index.html" class="site-logo" aria-label="Berkeley Geoimaging, home">
-        <span class="site-logo__monogram" aria-hidden="true">BGI<span>.</span></span>
+        <img class="site-logo__mark" src="images/bgi-logo-mark.svg" alt="" width="74" height="56">
         <span class="site-logo__text">Berkeley<br>Geoimaging, LLC</span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation">
@@ -59,73 +59,52 @@
       <nav id="main-nav" class="main-nav" aria-label="Main">
         <ul class="main-nav__list">
           <li><a href="index.html" class="main-nav__link" aria-current="page">Home</a></li>
-          <li><a href="about.html" class="main-nav__link">Company</a></li>
+          <li><a href="about.html" class="main-nav__link">About</a></li>
           <li><a href="bgi-resources.html" class="main-nav__link">BGI Resources</a></li>
           <li><a href="forbes-lake.html" class="main-nav__link">Forbes Lake</a></li>
           <li><a href="blog.html" class="main-nav__link">Journal</a></li>
-          <li><a href="contact.html" class="main-nav__link nav-contact">Get in touch <span aria-hidden="true">↗</span></a></li>
+          <li><a href="contact.html" class="main-nav__link nav-contact">Contact <span aria-hidden="true">↗</span></a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main-content" tabindex="-1">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero hero--depth" aria-labelledby="hero-title">
       <picture class="hero__media">
         <source media="(max-width: 600px)" srcset="images/pumpjacks-prairie-sm.jpg">
         <img src="images/pumpjacks-prairie.jpg" alt="Pumpjacks in the open prairie of Osage County, Oklahoma" width="1920" height="1440" fetchpriority="high">
       </picture>
+      <picture class="hero__foreground" aria-hidden="true"><source media="(max-width: 600px)" srcset="images/pumpjacks-prairie-sm.jpg"><img src="images/pumpjacks-prairie.jpg" alt="" width="1920" height="1440"></picture>
       <div class="hero__shade" aria-hidden="true"></div>
       <div class="hero__signal" aria-hidden="true"><canvas class="signal-canvas"></canvas></div>
       <div class="container hero__inner">
         <div class="hero__content">
-          <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span> Independent energy. Informed by geoscience.</p>
-          <h1 id="hero-title" class="hero__title">A clearer view.<br><em>A stronger<br class="hero-break"> operation.</em></h1>
-          <p class="hero__subtitle">From the subsurface to the wellhead. We explore, develop, and manage oil and gas assets in Oklahoma and Illinois.</p>
-          <div class="hero__actions">
-            <a href="#operations" class="btn btn--primary">Explore our operations <span aria-hidden="true">↗</span></a>
-            <a href="about.html" class="text-link">Meet Berkeley Geoimaging <span aria-hidden="true">→</span></a>
-          </div>
+          <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span> Berkeley Geoimaging, LLC</p>
+          <h1 id="hero-title" class="hero__title">We Drill Oil Wells<br><em>and Manage Them Efficiently</em></h1>
+          <p class="hero__subtitle">Oil and gas operations in Oklahoma and Illinois.</p>
+          <div class="hero__actions"><a href="bgi-resources.html" class="btn btn--primary">Our Flagship Operation <span aria-hidden="true">↗</span></a><a href="about.html" class="text-link">About <span aria-hidden="true">→</span></a></div>
         </div>
         <div class="hero__foot">
-          <a href="#approach" class="scroll-cue"><span aria-hidden="true">↓</span> Go beneath the surface</a>
+          <a href="#approach" class="scroll-cue"><span aria-hidden="true">↓</span> Our Approach</a>
           <span class="location-label"><span class="location-cross" aria-hidden="true">+</span> Osage County, Oklahoma</span>
         </div>
       </div>
     </section>
 
-    <section class="home-facts" aria-label="Our operating footprint">
-      <div class="container home-facts__grid">
-        <div><span class="fact-value">2001</span><span class="fact-label">First Forbes Lake investment</span></div>
-        <div><span class="fact-value">35</span><span class="fact-label">Wells in our Oklahoma portfolio</span></div>
-        <div><span class="fact-value">64,480</span><span class="fact-label">Acres under one concession</span></div>
-        <div><span class="fact-value">2</span><span class="fact-label">States. Deep local experience.</span></div>
-      </div>
-    </section>
-
-    <section class="section approach" id="approach">
-      <div class="container editorial-grid">
-        <div><p class="eyebrow">01 / Our approach</p><h2>Good operations<br>start with<br><em>understanding.</em></h2></div>
-        <div class="editorial-copy">
-          <p class="lead">Know the geology.<br>Understand the asset.<br>Stay close to the operation.</p>
-          <p>Berkeley Geoimaging was built around seismic interpretation. That foundation still shapes how we identify prospects, evaluate drilling locations, and manage our interests.</p>
-          <p>We pair geophysical insight with experienced local teams, careful cost control, and more than two decades of working in these fields.</p>
-          <a href="about.html" class="text-link text-link--dark">The people behind the work <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
+<section class="section approach" id="approach"><div class="container editorial-grid"><div><h2>Our Approach</h2></div><div class="editorial-copy"><p>We explore, drill, and operate oil and gas assets. Prospect identification starts with 3D seismic interpretation and local geology expertise. That work was done in-house for years and today runs through a network of experienced consultants who know these basins well.</p><p>Where we operate, we control costs, optimize production, and make the calls. Where we hold a working interest without operational control, we rely on 20-plus years of relationships and reservoir knowledge to protect that position. The same approach applies either way.</p></div></div></section>
 
     <section class="section operations" id="operations">
       <div class="container">
-        <div class="section-heading"><div><p class="eyebrow">02 / Our operations</p><h2>Two positions.<br><em>One considered approach.</em></h2></div><p>Hands-on operations in Oklahoma.<br>A long-held working interest in Illinois.</p></div>
+        <div class="section-heading"><div><h2>Our Projects</h2></div></div>
         <div class="operations-grid">
           <a href="bgi-resources.html" class="operation-card operation-card--featured">
-            <div class="operation-card__image"><img src="images/pumpjack-bgi-sign.jpg" alt="BGI field equipment and pumpjack in Oklahoma" width="1920" height="1440" loading="lazy"><span class="image-label">Oklahoma / Operated</span></div>
-            <div class="operation-card__body"><div class="operation-card__heading"><h3>BGI Resources</h3><span class="round-arrow" aria-hidden="true">↗</span></div><p>35 wells. 64,480 acres. A single exclusive drilling concession across three 3D seismic survey areas in Osage County.</p><span class="card__link-text">Explore the operation</span></div>
+            <div class="operation-card__image"><img src="images/pumpjack-bgi-sign.jpg" alt="BGI field equipment and pumpjack in Oklahoma" width="1920" height="1440" loading="lazy"><span class="image-label">Operated &bull; Oklahoma</span></div>
+            <div class="operation-card__body"><div class="operation-card__heading"><h3>BGI Resources</h3><span class="round-arrow" aria-hidden="true">↗</span></div><p>35-well portfolio with exclusive drilling concessions spanning over 100 square miles of Osage County, Oklahoma. 100% working interest, full operational control.</p><span class="card__link-text">Learn More</span></div>
           </a>
           <a href="forbes-lake.html" class="operation-card">
-            <div class="operation-card__image"><img src="images/flare-operations.jpg" alt="Field equipment and a gas flare at dusk" width="1920" height="1280" loading="lazy"><span class="image-label">Illinois / Non-operated</span></div>
-            <div class="operation-card__body"><div class="operation-card__heading"><h3>Forbes Lake</h3><span class="round-arrow" aria-hidden="true">↗</span></div><p>A working interest held since 2001 in a field with more than 4.5 million barrels of cumulative production.</p><span class="card__link-text">Explore the field</span></div>
+            <div class="operation-card__image"><img src="images/flare-operations.jpg" alt="Field equipment and a gas flare at dusk" width="1920" height="1280" loading="lazy"><span class="image-label">Non-Operated &bull; Illinois</span></div>
+            <div class="operation-card__body"><div class="operation-card__heading"><h3>Forbes Lake</h3><span class="round-arrow" aria-hidden="true">↗</span></div><p>A 21% working interest in an oil field beneath Forbes Lake State Park, Illinois. Over 4.5 million cumulative barrels produced across 14 wells over 25 years.</p><span class="card__link-text">Learn More</span></div>
           </a>
         </div>
       </div>
@@ -138,10 +117,9 @@
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-invitation"><p>Experience in the field.<br><span>A conversation away.</span></p><a href="contact.html" class="text-link">Get in touch <span aria-hidden="true">↗</span></a></div>
       <div class="site-footer__inner">
-        <div class="site-footer__brand"><a href="index.html" class="site-logo" aria-label="Berkeley Geoimaging, home"><span class="site-logo__monogram" aria-hidden="true">BGI<span>.</span></span><span class="site-logo__text">Berkeley<br>Geoimaging, LLC</span></a><p>320 South Boston Ave, Suite 1030-5<br>Tulsa, OK 74103</p></div>
-        <nav class="site-footer__nav" aria-label="Footer"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">Company</a></li><li><a href="bgi-resources.html">BGI Resources</a></li><li><a href="forbes-lake.html">Forbes Lake</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+        <div class="site-footer__brand"><a href="index.html" class="site-logo" aria-label="Berkeley Geoimaging, home"><img class="site-logo__mark" src="images/bgi-logo-mark-white.svg" alt="" width="74" height="56"><span class="site-logo__text">Berkeley<br>Geoimaging, LLC</span></a><p>320 South Boston Ave, Suite 1030-5<br>Tulsa, OK 74103</p></div>
+        <nav class="site-footer__nav" aria-label="Footer"><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="bgi-resources.html">BGI Resources</a></li><li><a href="forbes-lake.html">Forbes Lake</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
         <div class="footer-bottom"><p class="site-footer__copyright">&copy; <span data-year>2026</span> Berkeley Geoimaging, LLC. All rights reserved.</p><button class="motion-toggle" type="button" aria-pressed="false" hidden><span class="motion-toggle__icon" aria-hidden="true">Ⅱ</span><span class="motion-toggle__label">Pause motion</span></button></div>
       </div>
     </div>

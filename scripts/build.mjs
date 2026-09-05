@@ -11,7 +11,7 @@ for (const entry of await readdir(root, { withFileTypes: true })) {
     await cp(join(root, entry.name), join(output, entry.name));
   }
 }
-for (const folder of ['css', 'js', 'images']) {
+for (const folder of ['css', 'js', 'images', 'media']) {
   await cp(join(root, folder), join(output, folder), { recursive: true });
 }
 console.log('Static site built in dist/.');

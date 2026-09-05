@@ -13,3 +13,8 @@ screenshots/
 
 # Generated static build
 dist/
+
+# Remotion development only
+motion/node_modules/
+motion/build/
+motion/renders/

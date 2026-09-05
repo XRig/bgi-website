@@ -67,6 +67,50 @@
     });
   }
 
+  // Scroll depth uses the original photograph on two image planes.
+  // The near plane is limited to ground below the equipment, so machinery stays intact.
+  const depthHero = document.querySelector('.hero--depth');
+  const depthCards = [...document.querySelectorAll('.operation-card__image')];
+  let depthFrame = 0;
+  const updateDepth = () => {
+    depthFrame = 0;
+    const enabled = !reducedMotion.matches && !userPaused && !mobile.matches && !document.hidden;
+    if (depthHero) {
+      const bounds = depthHero.getBoundingClientRect();
+      const progress = enabled ? Math.max(0, Math.min(1, -bounds.top / Math.max(bounds.height, 1))) : 0;
+      depthHero.style.setProperty('--depth-progress', progress.toFixed(4));
+    }
+    depthCards.forEach(card => {
+      const bounds = card.getBoundingClientRect();
+      const position = enabled ? Math.max(-1, Math.min(1, (bounds.top + bounds.height / 2 - innerHeight / 2) / innerHeight)) : 0;
+      card.style.setProperty('--card-depth', position.toFixed(4));
+    });
+  };
+  const scheduleDepth = () => { if (!depthFrame) depthFrame = requestAnimationFrame(updateDepth); };
+  window.addEventListener('scroll', scheduleDepth, { passive: true });
+  window.addEventListener('resize', scheduleDepth, { passive: true });
+
+  const films = [...document.querySelectorAll('[data-motion-video]')].map(video => ({ video, visible: false, failed: false }));
+  const syncFilms = () => {
+    films.forEach(film => {
+      const play = film.visible && !reducedMotion.matches && !userPaused && !document.hidden && !navigator.connection?.saveData && !film.failed;
+      if (!play) { film.video.pause(); return; }
+      if (!film.video.src) { film.video.src = film.video.dataset.motionVideo; film.video.load(); }
+      if (film.video.paused) film.video.play().catch(() => { film.video.closest('.field-film')?.classList.remove('film-ready'); });
+    });
+  };
+  films.forEach(film => {
+    film.video.addEventListener('playing', () => film.video.closest('.field-film')?.classList.add('film-ready'));
+    film.video.addEventListener('error', () => { film.failed = true; film.video.closest('.field-film')?.classList.remove('film-ready'); });
+  });
+  if ('IntersectionObserver' in window) {
+    const filmObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { const film = films.find(item => item.video === entry.target); if (film) film.visible = entry.isIntersecting; });
+      syncFilms();
+    }, { threshold: 0.1 });
+    films.forEach(film => filmObserver.observe(film.video));
+  } else films.forEach(film => { film.visible = true; });
+
   // Abstract signal traces echo the company's seismic roots; these are decorative, not field data.
   const signals = [...document.querySelectorAll('.signal-canvas')].map(canvas => {
     const context = canvas.getContext('2d');
@@ -126,6 +170,8 @@
       motionToggle.querySelector('.motion-toggle__label').textContent = reducedMotion.matches ? 'Reduced motion on' : userPaused ? 'Play motion' : 'Pause motion';
       motionToggle.querySelector('.motion-toggle__icon').textContent = paused ? '▷' : 'Ⅱ';
     }
+    scheduleDepth();
+    syncFilms();
     cancelAnimationFrame(frame);
     frame = 0;
     lastTime = 0;
