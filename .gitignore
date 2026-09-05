@@ -10,3 +10,11 @@ screenshots/
 
 # Claude project files
 .claude/
+
+# Generated static build
+dist/
+
+# Remotion development only
+motion/node_modules/
+motion/build/
+motion/renders/
